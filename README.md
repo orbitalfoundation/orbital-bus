@@ -7,8 +7,8 @@ This monorepo publishes two packages:
 
 | Package | What it is |
 |---|---|
-| [`@orbital/bus`](packages/bus) | The bus kernel: one `resolve()` for publishing, registering, and querying. |
-| [`@orbital/utils`](packages/utils) | Zero-dependency, environment-neutral logger + seeded PRNG. |
+| [`@orbitalfoundation/bus`](packages/bus) | The bus kernel: one `resolve()` for publishing, registering, and querying. |
+| [`@orbitalfoundation/utils`](packages/utils) | Zero-dependency, environment-neutral logger + seeded PRNG. |
 
 The design — and every load-bearing semantic — is written down in **[SPEC.md](SPEC.md)**. Read
 that to understand *why* the bus behaves the way it does; the conformance tests
@@ -23,7 +23,7 @@ npm run smoke     # one-tick end-to-end check
 ```
 
 ```js
-import { createBus } from '@orbital/bus'
+import { createBus } from '@orbitalfoundation/bus'
 
 const bus = createBus()
 
@@ -42,8 +42,8 @@ const answer = await bus.resolve({ ping: true })   // first non-undefined return
 
 ```
 packages/
-  bus/     @orbital/bus    kernel + manifest loader + tick driver + schema reservation
-  utils/   @orbital/utils  logger + random
+  bus/     @orbitalfoundation/bus    kernel + manifest loader + tick driver + schema reservation
+  utils/   @orbitalfoundation/utils  logger + random
 SPEC.md    the contract and philosophy
 ```
 
@@ -52,13 +52,16 @@ SPEC.md    the contract and philosophy
 Pre-publish. Code is environment-neutral by design (§7 of the SPEC); the conformance suite
 currently runs under Node — a browser lane is a tracked open question (SPEC §9).
 
-### Before publishing to npm
+### Publishing to npm
 
-1. Confirm the **`@orbital` npm scope** is owned by your account/org (`npm org ls orbital`). If
-   it is taken, fall back to a scope you own (e.g. `@orbitalfoundation`) and update the two
-   `package.json` names + the `@orbital/utils` dependency in `packages/bus`.
-2. `npm publish --workspace @orbital/utils` first (bus depends on it), then
-   `npm publish --workspace @orbital/bus`.
+Both packages live under the **`@orbitalfoundation`** scope (an npm org owned by `anselm`).
+Publish `utils` first — `bus` depends on it:
+
+1. Authenticate with a token that has **write access to the `@orbitalfoundation` org**. An
+   **Automation** token is simplest (it bypasses 2FA/OTP, which interactive publishing does not).
+2. `npm publish --workspace @orbitalfoundation/utils` then
+   `npm publish --workspace @orbitalfoundation/bus`.
+   (Scoped packages publish public via each package's `publishConfig.access: public`.)
 3. Point consumers (e.g. `social/jam`, `orbital-sim`) at the published versions and delete their
    vendored copies.
 

@@ -1,4 +1,4 @@
-# @orbital/bus — Specification & Philosophy
+# @orbitalfoundation/bus — Specification & Philosophy
 
 This is the contract. The code in `packages/bus` is one implementation of it; the tests in
 `packages/bus/test` are the executable form of it. When behavior and this document disagree,
@@ -71,7 +71,7 @@ requirement**, not a nicety — the identical kernel must run in the browser and
 ## 2. Core API
 
 ```js
-import { createBus } from '@orbital/bus'
+import { createBus } from '@orbitalfoundation/bus'
 
 const bus = createBus({ tStart = 0, description = 'orbital bus' } = {})
 ```
@@ -247,7 +247,7 @@ relative/absolute paths resolve via `new URL(spec, base)`.
 
 ### 7.3 Cross-env primitives
 UUIDs via `globalThis.crypto.randomUUID()` with a non-crypto fallback. Timing via
-`performance.now()`. Logging via `@orbital/utils`, which carries no Node-only imports.
+`performance.now()`. Logging via `@orbitalfoundation/utils`, which carries no Node-only imports.
 
 ---
 

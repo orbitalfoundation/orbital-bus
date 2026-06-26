@@ -1,4 +1,4 @@
-# @orbital/bus
+# @orbitalfoundation/bus
 
 A late-binding, declarative event bus for client and server. Descended from
 [orbital-sys](https://github.com/orbitalfoundation/orbital-sys).
@@ -9,7 +9,8 @@ assembles itself at runtime from manifests, each publishing agents that register
 claim a namespace, and install services onto `bus`.
 
 > The full contract and the reasoning behind every behavior live in
-> **[SPEC.md](../../SPEC.md)**. This README is the tour; the SPEC is the law.
+> **[SPEC.md](https://github.com/orbitalfoundation/orbital-bus/blob/main/SPEC.md)**.
+> This README is the tour; the SPEC is the law.
 
 ```js
 // fire-and-forget — all matching listeners run
@@ -22,7 +23,7 @@ const nearby = await bus.resolve({ spatial_query: { near: [-61.5, 10.2], radius:
 ## Install
 
 ```sh
-npm install @orbital/bus
+npm install @orbitalfoundation/bus
 ```
 
 Runs unchanged in Node (≥18) and the browser — no build step, no Node-only imports in the kernel.
@@ -30,7 +31,7 @@ Runs unchanged in Node (≥18) and the browser — no build step, no Node-only i
 ## Usage
 
 ```js
-import { createBus } from '@orbital/bus'
+import { createBus } from '@orbitalfoundation/bus'
 
 const bus = createBus()
 await bus.resolve({ load: '/abs/or/url/to/manifest.js' })
@@ -66,7 +67,7 @@ declarative but are *real JavaScript* — loops, computed ids, macros.
 
 ```js
 export const world = {
-  inherits: '@orbital/world',
+  inherits: '@orbitalfoundation/world',
   lats: [-60, -30, 0, 30, 60],
   t0: '2026-06-21T12:00:00Z',
 }

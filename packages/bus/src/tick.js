@@ -7,7 +7,7 @@
 // and an adaptive setTimeout on the server (measures actual tick duration, sleeps the
 // remainder, minimum 10 ms). Sending { run: 'realtime' } while already running is a no-op.
 
-import logger from '@orbital/utils';
+import logger from '@orbitalfoundation/utils';
 
 const MIN_SLEEP_MS = 10;
 

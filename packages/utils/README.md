@@ -1,6 +1,6 @@
-# @orbital/utils
+# @orbitalfoundation/utils
 
-Tiny, zero-dependency, environment-neutral utilities used by [`@orbital/bus`](../bus). Runs in
+Tiny, zero-dependency, environment-neutral utilities used by [`@orbitalfoundation/bus`](../bus). Runs in
 Node and the browser unchanged.
 
 ## Logger
@@ -11,8 +11,8 @@ where the host exposes a V8 structured stack, and degrades gracefully where it d
 values are flattened to keep logs scannable.
 
 ```js
-import Logger from '@orbital/utils'      // default export
-// or: import { Logger } from '@orbital/utils'
+import Logger from '@orbitalfoundation/utils'      // default export
+// or: import { Logger } from '@orbitalfoundation/utils'
 
 Logger.info('server up', { port: 8080 })
 Logger.warn('retrying', { attempt: 2 })   // includes caller file:line
@@ -25,7 +25,7 @@ Logger.error(new Error('boom'))           // message on one line
 useful for reproducible simulations.
 
 ```js
-import { mulberry32 } from '@orbital/utils'
+import { mulberry32 } from '@orbitalfoundation/utils'
 
 const rand = mulberry32(42)
 rand(); rand(); rand()   // deterministic

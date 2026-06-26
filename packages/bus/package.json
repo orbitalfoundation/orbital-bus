@@ -1,5 +1,5 @@
 {
-  "name": "@orbital/bus",
+  "name": "@orbitalfoundation/bus",
   "version": "2.0.0",
   "description": "A late-binding, declarative pub/sub event bus for client and server. Descended from orbital-sys.",
   "type": "module",
@@ -22,7 +22,7 @@
     "smoke": "node test/smoke.js"
   },
   "dependencies": {
-    "@orbital/utils": "^2.0.0"
+    "@orbitalfoundation/utils": "^2.0.0"
   },
   "keywords": [
     "pubsub",

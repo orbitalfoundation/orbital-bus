@@ -1,4 +1,4 @@
-// @orbital/bus — a late-binding, declarative event bus for client and server.
+// @orbitalfoundation/bus — a late-binding, declarative event bus for client and server.
 //
 // One entry point does everything:
 //   bus.resolve(blob)   publish an event, register a listener, or run a query
@@ -12,7 +12,7 @@
 //   - Nested resolve() calls run immediately and fully complete before the parent
 //     continues. There is no queue. This is deliberate.
 
-import logger from '@orbital/utils';
+import logger from '@orbitalfoundation/utils';
 
 import { manifestLoader } from './load.js';
 import { schemaHandler } from './schema.js';

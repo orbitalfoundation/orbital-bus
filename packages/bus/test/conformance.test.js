@@ -1,4 +1,4 @@
-// Conformance suite for @orbital/bus.
+// Conformance suite for @orbitalfoundation/bus.
 //
 // These tests are the executable contract. Each one pins a semantic decision documented
 // in SPEC.md. Any reimplementation (a browser build, a port, a rewrite) is correct iff it

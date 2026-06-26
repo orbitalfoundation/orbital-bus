@@ -5,7 +5,7 @@
 // reserves 'gravity' and 'collide'. A second claimant on the same key gets a warning.
 // This is advisory, not enforced — it is a debugging aid for large manifests.
 
-import logger from '@orbital/utils';
+import logger from '@orbitalfoundation/utils';
 
 export const schemaHandler = {
   id: 'bus.schema',

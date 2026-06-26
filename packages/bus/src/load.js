@@ -16,7 +16,7 @@
 // (filesystem, file:// URLs) and the browser (network, http(s):// URLs). Relative `inherits`
 // resolve against the *manifest's own URL*, exactly like ES module resolution.
 
-import logger from '@orbital/utils';
+import logger from '@orbitalfoundation/utils';
 
 const isServer =
   typeof process !== 'undefined' && !!process.versions?.node && typeof window === 'undefined';
