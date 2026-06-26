@@ -68,19 +68,6 @@ SPEC.md    the law: the load-bearing contract
 Published to npm. Code is environment-neutral by design (§7 of the SPEC); the conformance suite
 currently runs under Node — a browser lane is a tracked open question (SPEC §9).
 
-### Publishing to npm
-
-Both packages live under the **`@orbitalfoundation`** scope (an npm org owned by `anselm`).
-Publish `utils` first — `bus` depends on it:
-
-1. Authenticate with a token that has **write access to the `@orbitalfoundation` org**. An
-   **Automation** token is simplest (it bypasses 2FA/OTP, which interactive publishing does not).
-2. `npm publish --workspace @orbitalfoundation/utils` then
-   `npm publish --workspace @orbitalfoundation/bus`.
-   (Scoped packages publish public via each package's `publishConfig.access: public`.)
-3. Point consumers (e.g. `social/jam`, `orbital-sim`) at the published versions and delete their
-   vendored copies.
-
 ## License
 
 MIT — see [LICENSE](LICENSE).
