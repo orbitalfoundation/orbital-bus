@@ -5,10 +5,10 @@ utilities it leans on. Descended from [orbital-sys](https://github.com/orbitalfo
 
 This monorepo publishes two packages:
 
-| Package | What it is |
-|---|---|
-| [`@orbitalfoundation/bus`](packages/bus) | The bus kernel: one `resolve()` for publishing, registering, and querying. |
-| [`@orbitalfoundation/utils`](packages/utils) | Zero-dependency, environment-neutral logger + seeded PRNG. |
+| Package | npm | What it is |
+|---|---|---|
+| [`@orbitalfoundation/bus`](packages/bus) | [npm](https://www.npmjs.com/package/@orbitalfoundation/bus) | The bus kernel: one `resolve()` for publishing, registering, and querying. |
+| [`@orbitalfoundation/utils`](packages/utils) | [npm](https://www.npmjs.com/package/@orbitalfoundation/utils) | Zero-dependency, environment-neutral logger + seeded PRNG. |
 
 Three documents, three altitudes:
 
@@ -20,12 +20,13 @@ Three documents, three altitudes:
 - The conformance tests ([packages/bus/test](packages/bus/test)) are the executable form of the
   SPEC.
 
-## Quick start
+## Install
+
+To use the bus in your own project, install it from npm (runs unchanged in Node ≥18 and the
+browser — no build step):
 
 ```sh
-npm install
-npm test          # runs both packages' suites
-npm run smoke     # one-tick end-to-end check
+npm install @orbitalfoundation/bus
 ```
 
 ```js
@@ -44,18 +45,27 @@ await bus.resolve({ run: true, ticks: 5, dt: 1 })
 const answer = await bus.resolve({ ping: true })   // first non-undefined return wins
 ```
 
+## Developing on this repo
+
+```sh
+npm install       # install workspace deps
+npm test          # runs both packages' suites
+npm run smoke     # one-tick end-to-end check
+```
+
 ## Layout
 
 ```
 packages/
   bus/     @orbitalfoundation/bus    kernel + manifest loader + tick driver + schema reservation
   utils/   @orbitalfoundation/utils  logger + random
-SPEC.md    the contract and philosophy
+PRIMER.md  the why: history, patterns, critique
+SPEC.md    the law: the load-bearing contract
 ```
 
 ## Status
 
-Pre-publish. Code is environment-neutral by design (§7 of the SPEC); the conformance suite
+Published to npm. Code is environment-neutral by design (§7 of the SPEC); the conformance suite
 currently runs under Node — a browser lane is a tracked open question (SPEC §9).
 
 ### Publishing to npm
