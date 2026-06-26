@@ -11,8 +11,7 @@
     "index.js",
     "run.js",
     "src/",
-    "README.md",
-    "SPEC.md"
+    "README.md"
   ],
   "bin": {
     "orbital-bus": "./run.js"
