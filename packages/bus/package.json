@@ -1,0 +1,50 @@
+{
+  "name": "@orbital/bus",
+  "version": "2.0.0",
+  "description": "A late-binding, declarative pub/sub event bus for client and server. Descended from orbital-sys.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "run.js",
+    "src/",
+    "README.md",
+    "SPEC.md"
+  ],
+  "bin": {
+    "orbital-bus": "./run.js"
+  },
+  "scripts": {
+    "test": "node --test test/conformance.test.js test/load.test.js",
+    "smoke": "node test/smoke.js"
+  },
+  "dependencies": {
+    "@orbital/utils": "^2.0.0"
+  },
+  "keywords": [
+    "pubsub",
+    "event-bus",
+    "ecs",
+    "simulation",
+    "declarative",
+    "manifest",
+    "reactive"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbitalfoundation/orbital-bus.git",
+    "directory": "packages/bus"
+  },
+  "homepage": "https://github.com/orbitalfoundation/orbital-bus#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  }
+}

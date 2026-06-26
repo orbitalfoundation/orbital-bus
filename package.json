@@ -1,0 +1,23 @@
+{
+  "name": "orbital-bus-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Monorepo for @orbital/bus and @orbital/utils.",
+  "workspaces": [
+    "packages/utils",
+    "packages/bus"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "smoke": "npm run smoke --workspace @orbital/bus"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbitalfoundation/orbital-bus.git"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

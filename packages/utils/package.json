@@ -1,0 +1,38 @@
+{
+  "name": "@orbital/utils",
+  "version": "2.0.0",
+  "description": "Tiny zero-dependency utilities for @orbital — an environment-neutral logger and a seeded PRNG.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "src/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test test/test.js"
+  },
+  "keywords": [
+    "logger",
+    "prng",
+    "mulberry32",
+    "isomorphic"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbitalfoundation/orbital-bus.git",
+    "directory": "packages/utils"
+  },
+  "homepage": "https://github.com/orbitalfoundation/orbital-bus#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  }
+}
