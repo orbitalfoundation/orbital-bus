@@ -10,9 +10,15 @@ This monorepo publishes two packages:
 | [`@orbitalfoundation/bus`](packages/bus) | The bus kernel: one `resolve()` for publishing, registering, and querying. |
 | [`@orbitalfoundation/utils`](packages/utils) | Zero-dependency, environment-neutral logger + seeded PRNG. |
 
-The design — and every load-bearing semantic — is written down in **[SPEC.md](SPEC.md)**. Read
-that to understand *why* the bus behaves the way it does; the conformance tests
-([packages/bus/test](packages/bus/test)) are the executable form of the same contract.
+Three documents, three altitudes:
+
+- **[PRIMER.md](PRIMER.md)** — the *why*: where these ideas come from (late binding, message
+  passing, the history of JavaScript's event model), the formal patterns they instantiate, and a
+  critical reading of the design's tradeoffs. Start here to decide whether the bus is a good idea.
+- **[SPEC.md](SPEC.md)** — the *law*: every load-bearing semantic, precisely stated. Read this to
+  implement against or extend the bus.
+- The conformance tests ([packages/bus/test](packages/bus/test)) are the executable form of the
+  SPEC.
 
 ## Quick start
 

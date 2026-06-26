@@ -13,24 +13,21 @@ backbone *is* and which of its subtle behaviors are load-bearing.
 
 ## 1. Philosophy
 
+> The *motivation* for this design — the contrast with forward imperative composition, the
+> late-binding argument, the historical lineage, and a critical reading of the tradeoffs — lives
+> in **[PRIMER.md](PRIMER.md)**. This section states only the load-bearing premises the rest of
+> the contract depends on.
+
 ### 1.1 One channel, late binding
 
-Most software is wired by **forward imperative composition**: module A imports B, calls
-`B.doThing()`, and the call graph is fixed at author time. This produces a tangle of imports
-and a system whose shape you can only see by tracing calls.
-
-The bus inverts that. There is **one entry point** — `bus.resolve(blob)` — used for
-*everything*: publishing state, registering listeners, and asking questions. Components do not
-import each other. They publish state changes and respond to state changes. The application
-**assembles itself at runtime** from whatever listeners happen to be registered. Wiring is
-late-bound, not author-bound.
-
-The payoff, in the words of the original orbital-sys readme: *developers focus on publishing
-state changes without worrying about how those changes will produce effects.*
+There is one entry point — `bus.resolve(blob)` — for everything: publishing state, registering
+listeners, and asking questions. Components do not import each other; they publish and respond to
+state changes, and the application assembles itself at runtime from whatever listeners are
+registered.
 
 ### 1.2 The single blob
 
-A single object shape — a "blob" — serves three roles, distinguished only by its contents:
+One object shape serves three roles by its contents alone:
 
 | The blob has...        | ...so it is | and `resolve()` will |
 |------------------------|-------------|----------------------|
@@ -38,33 +35,28 @@ A single object shape — a "blob" — serves three roles, distinguished only by
 | no `resolve` function  | an event    | dispatch it to listeners |
 | a value worth returning from a listener | a query answer | stop the chain and return it |
 
-This is the core economy of the design: **publishing traffic and registering listeners are the
-same operation on the same data shape.** A manifest full of listeners and a stream of events are
-made of the same stuff.
+Publishing traffic and registering listeners are the same operation on the same data shape.
 
 ### 1.3 Live, uncloned state
 
-Events are **not** cloned. Listeners may read and mutate the event object in place, and
-downstream listeners see those mutations. State flows as "objects decorated with properties"
-(an entity-component feel), not as immutable messages. This is a deliberate choice for speed and
-for the decorate-as-you-go pattern; the cost is that listeners must be disciplined about
-mutation. See §6 footguns.
+Events are **not** cloned. Listeners may read and mutate the event object in place; downstream
+listeners see those mutations. State flows as objects decorated with properties (an
+entity-component feel), not as immutable messages — a deliberate choice for speed and the
+decorate-as-you-go pattern, at the cost of mutation discipline (§6).
 
 ### 1.4 Manifests are executable declarations
 
-An application is assembled by loading **manifests**: ordinary ESM (`.js`) files whose exports
-are blobs to register or dispatch (§5). Manifests are declarative in *shape* but are real
-JavaScript — so you get loops, computed ids, conditionals, imports, and effectively **macros**.
-JSON is not powerful enough to say "twelve agents at incrementing positions" in one line; a `.js`
-manifest is. The goal is declarative authoring **without** giving up the expressive power of the
-host language.
+An application is assembled by loading **manifests**: ordinary ESM (`.js`) files whose exports are
+blobs to register or dispatch (§5). Declarative in *shape* but real JavaScript — loops, computed
+ids, imports, effectively macros — so "twelve agents at incrementing positions" is one line, which
+JSON cannot express.
 
 ### 1.5 An application substrate, not just a sim kernel
 
-In practice this bus is used well beyond simulation: a WebSocket bridges the **same** bus across
-the network so browser clients and the server share one channel; multiplayer state, API calls,
-and inter-user chatter all ride it. That is why **environment neutrality (§7) is a hard
-requirement**, not a nicety — the identical kernel must run in the browser and on the server.
+A WebSocket bridges the **same** bus across the network so browser clients and the server share one
+channel; multiplayer state, API calls, and inter-user chatter ride it. This is why **environment
+neutrality (§7) is a hard requirement**, not a nicety — the identical kernel must run in the browser
+and on the server.
 
 ---
 

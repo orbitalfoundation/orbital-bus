@@ -8,9 +8,10 @@ events, and querying services. Almost nothing is declared ahead of time — the 
 assembles itself at runtime from manifests, each publishing agents that register themselves,
 claim a namespace, and install services onto `bus`.
 
-> The full contract and the reasoning behind every behavior live in
-> **[SPEC.md](https://github.com/orbitalfoundation/orbital-bus/blob/main/SPEC.md)**.
-> This README is the tour; the SPEC is the law.
+> This README is the tour. The **[SPEC](https://github.com/orbitalfoundation/orbital-bus/blob/main/SPEC.md)**
+> is the law — every load-bearing behavior, precisely stated. The
+> **[PRIMER](https://github.com/orbitalfoundation/orbital-bus/blob/main/PRIMER.md)** is the *why* —
+> the history, the formal patterns, and a critical reading of the design.
 
 ```js
 // fire-and-forget — all matching listeners run
