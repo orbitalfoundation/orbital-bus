@@ -1,6 +1,6 @@
 {
   "name": "@orbitalfoundation/bus",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A late-binding, declarative pub/sub event bus for client and server. Descended from orbital-sys.",
   "type": "module",
   "main": "index.js",
